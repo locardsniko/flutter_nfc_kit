@@ -74,6 +74,9 @@ public class SwiftFlutterNfcKitPlugin: NSObject, FlutterPlugin, NFCTagReaderSess
                 if let multipleTagMessage = arguments["iosMultipleTagMessage"] as? String {
                     self.multipleTagMessage = multipleTagMessage
                 }
+                if let alwaysReadFirstTag = arguments["iosAlwaysReadFirstTag"] as? Bool {
+                    self.alwaysReadFirstTag = alwaysReadFirstTag
+                }
                 self.result = result
                 session?.begin()
             }
@@ -381,7 +384,7 @@ public class SwiftFlutterNfcKitPlugin: NSObject, FlutterPlugin, NFCTagReaderSess
 
     // from NFCTagReaderSessionDelegate
     public func tagReaderSession(_ session: NFCTagReaderSession, didDetect tags: [NFCTag]) {
-        if tags.count > 1 {
+        if tags.count > 1 && !alwaysReadFirstTag {
             // Restart polling in 500ms
             let retryInterval = DispatchTimeInterval.milliseconds(500)
             if multipleTagMessage != nil {

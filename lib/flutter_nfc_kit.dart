@@ -233,6 +233,7 @@ class FlutterNfcKit {
     bool androidPlatformSound = true,
     bool androidCheckNDEF = true,
     String iosAlertMessage = "Hold your iPhone near the card",
+    bool iosAlwaysReadFirstTag = true,
     String iosMultipleTagMessage =
         "More than one tags are detected, please leave only one tag and try again.",
     bool readIso14443A = true,
@@ -255,6 +256,7 @@ class FlutterNfcKit {
       'timeout': timeout?.inMilliseconds ?? POLL_TIIMEOUT,
       'iosAlertMessage': iosAlertMessage,
       'iosMultipleTagMessage': iosMultipleTagMessage,
+      'iosAlwaysReadFirstTag': iosAlwaysReadFirstTag,
       'technologies': technologies,
       'probeWebUSBMagic': probeWebUSBMagic,
     });
