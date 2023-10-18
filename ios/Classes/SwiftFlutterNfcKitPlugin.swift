@@ -35,6 +35,7 @@ public class SwiftFlutterNfcKitPlugin: NSObject, FlutterPlugin, NFCTagReaderSess
     var result: FlutterResult?
     var tag: NFCTag?
     var multipleTagMessage: String?
+    var alwaysReadFirstTag: Bool?
 
     public static func register(with registrar: FlutterPluginRegistrar) {
         let channel = FlutterMethodChannel(name: "flutter_nfc_kit", binaryMessenger: registrar.messenger())
